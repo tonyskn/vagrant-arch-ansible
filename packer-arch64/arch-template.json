@@ -1,0 +1,34 @@
+{
+    "variables": {
+        "iso_url": "http://mirrors.kernel.org/archlinux/iso/2013.10.01/archlinux-2013.10.01-dual.iso",
+        "iso_checksum": "c0de9cde5f3c8f765a8fad06a07c5f6db3a93b15",
+        "iso_checksum_type": "sha1"
+    },
+    "builders": [
+        {
+            "type": "virtualbox",
+            "iso_url": "{{user `iso_url`}}",
+            "iso_checksum": "{{user `iso_checksum`}}",
+            "iso_checksum_type": "{{user `iso_checksum_type`}}",
+            "guest_os_type": "ArchLinux_64",
+            "guest_additions_attach": "true",
+            "http_directory": ".",
+            "boot_wait": "5s",
+            "boot_command": [
+                "<enter><wait10><wait10>",
+                "/usr/bin/curl -s http://{{.HTTPIP}}:{{.HTTPPort}}/bootstrap.sh<enter><wait5>",
+                "/usr/bin/bash ./bootstrap.sh<enter>"
+            ],
+            "disk_size": 20480,
+            "ssh_username": "root",
+            "ssh_password": "vagrant",
+            "shutdown_command": "systemctl start poweroff.timer"
+        }
+    ],
+    "post-processors": [
+        {
+            "type": "vagrant",
+            "output": "packer_arch64_{{.Provider}}.box"
+        }
+    ]
+}

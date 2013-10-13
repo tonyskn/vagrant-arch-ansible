@@ -1,0 +1,12 @@
+---
+- hosts: all
+  sudo: yes
+  tasks:
+  - name: install some basic packages
+    pacman: name={{ item }} state=installed
+    with_items:
+      - tmux
+      - git
+      - redis
+  - name: start redis
+    service: name=redis state=started
