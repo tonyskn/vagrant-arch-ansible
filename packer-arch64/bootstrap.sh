@@ -83,7 +83,7 @@ cat <<-EOF > "${TARGET_DIR}${CONFIG_SCRIPT}"
    /usr/bin/curl --output /etc/systemd/system/poweroff.timer https://raw.github.com/elasticdog/packer-arch/master/poweroff.timer
 
    # configure NFS
-   /usr/bin/pacman -S nfs-utils
+   /usr/bin/pacman -S --noconfirm nfs-utils
    /usr/bin/systemctl enable rpc-statd.service
 
    # install python2 to make VM Ansible ready
