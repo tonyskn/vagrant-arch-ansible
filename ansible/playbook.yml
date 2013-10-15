@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: vagrant
   sudo: yes
   tasks:
   - name: install some basic packages
