@@ -6,7 +6,7 @@ Vagrant.configure("2") do |config|
    # Configure Ansible provisionner
    config.vm.provision :ansible do |ansible|
       ansible.host_key_checking = false
-      ansible.inventory_file = "ansible/hosts"
+      ansible.inventory_path = "ansible/hosts"
       ansible.extra_vars = { ansible_python_interpreter: "/usr/bin/python2" }
       ansible.verbose = "extra"
 

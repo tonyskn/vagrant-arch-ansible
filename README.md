@@ -21,4 +21,11 @@ could provision VMs with Ansible out of the box.
 
 ## Usage
 
-A simple VM using the `arch64` box and provisionned with Ansible is described in `Vagrantfile` 
+A simple VM using the `arch64` box and provisionned with Ansible is described in `Vagrantfile`:
+
+```
+vagrant up
+vagrant provision
+```
+
+Tested on an Arch host with `VirtualBox 4.3.0` and `Vagrant 1.3.5`
